@@ -1,4 +1,4 @@
-package com.example.emos.wx.conig.shiro;
+package com.example.emos.wx.config.shiro;
 
 import cn.hutool.core.util.StrUtil;
 import com.auth0.jwt.exceptions.JWTDecodeException;
@@ -22,7 +22,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 @Component

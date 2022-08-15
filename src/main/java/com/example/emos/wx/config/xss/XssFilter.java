@@ -1,7 +1,5 @@
-package com.example.emos.wx.conig.xss;
+package com.example.emos.wx.config.xss;
 
-
-import com.example.emos.wx.config.xss.XssHttpServletRequestWrapper;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

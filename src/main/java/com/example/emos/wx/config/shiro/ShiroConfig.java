@@ -1,4 +1,4 @@
-package com.example.emos.wx.conig.shiro;
+package com.example.emos.wx.config.shiro;
 
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;

@@ -1,4 +1,4 @@
-package com.example.emos.wx.conig;
+package com.example.emos.wx.config;
 
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
