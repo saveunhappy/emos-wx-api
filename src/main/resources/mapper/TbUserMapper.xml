@@ -49,4 +49,14 @@
         WHERE open_id = #{openId}
           AND status = 1
     </select>
+
+    <select id="searchUserPermissions" parameterType="int" resultType="String">
+        SELECT DISTINCT p.permission_name
+        FROM tb_user u
+                 JOIN tb_role r ON JSON_CONTAINS(u.role, CAST(r.id as CHAR))
+                 JOIN tb_permission p ON JSON_CONTAINS(r.permissions, CAST(p.id as CHAR))
+        WHERE u.id = #{userId}
+          AND u.status = 1
+    </select>
+
 </mapper>

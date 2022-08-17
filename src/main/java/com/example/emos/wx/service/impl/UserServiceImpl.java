@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -55,7 +56,7 @@ public class UserServiceImpl implements UserService {
                 param.put("photo",photo);
                 param.put("role","[0]");
                 param.put("status",1);
-                param.put("createTIme",new Date());
+                param.put("createTime",new Date());
                 param.put("root",true);
                 userDao.insert(param);
                 Integer id = userDao.searchIdByOpenId(openId);
@@ -67,5 +68,10 @@ public class UserServiceImpl implements UserService {
             //TODO 此处还有其他判断内容
         }
         return 0;
+    }
+
+    @Override
+    public Set<String> searchUserPermissions(int userId) {
+        return userDao.searchUserPermissions(userId);
     }
 }
