@@ -1,38 +1,35 @@
 package com.example.emos.wx.db.pojo;
 
-import java.io.Serializable;
-import lombok.Data;
-
-/**
- * sys_config
- * @author 
- */
-@Data
-public class TbDept implements Serializable {
-    /**
-     * 主键
-     */
+public class TbDept {
     private Integer id;
 
-    /**
-     * 参数名
-     */
-    private String paramKey;
+    private String deptName;
 
-    /**
-     * 参数值
-     */
-    private String paramValue;
+    public Integer getId() {
+        return id;
+    }
 
-    /**
-     * 状态
-     */
-    private Byte status;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    /**
-     * 备注
-     */
-    private String remark;
+    public String getDeptName() {
+        return deptName;
+    }
 
-    private static final long serialVersionUID = 1L;
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", deptName=").append(deptName);
+        sb.append("]");
+        return sb.toString();
+    }
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!--覆盖生成XML文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <!-- 生成的实体类添加toString()方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+        <!-- 不生成注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/emos?serverTimezone=Asia/Shanghai"
+                        userId="root"
+                        password="root">
+         <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+
+        <!-- domain类的位置 -->
+        <javaModelGenerator targetProject="src\main\java"
+                            targetPackage="com.example.emos.wx.db.pojo"/>
+
+        <!-- mapper xml的位置 -->
+        <sqlMapGenerator targetProject="src\main\resources"
+                         targetPackage="mapper"/>
+
+        <!-- mapper类的位置 -->
+        <javaClientGenerator targetProject="src\main\java"
+                             targetPackage="com.example.emos.wx.db.dao"
+                             type="XMLMAPPER" />
+        <table tableName="sys_config" domainObjectName="SysConfig"/>
+        <table tableName="tb_action" domainObjectName="TbAction"/>
+        <table tableName="tb_checkin" domainObjectName="TbCheckin"/>
+        <table tableName="tb_city" domainObjectName="TbCity"/>
+        <table tableName="tb_dept" domainObjectName="TbDept"/>
+        <table tableName="tb_face_model" domainObjectName="TbFaceModel"/>
+        <table tableName="tb_holidays" domainObjectName="tbHolidays"/>
+        <table tableName="tb_meeting" domainObjectName="TbMeeting"/>
+        <table tableName="tb_module" domainObjectName="tbModule"/>
+        <table tableName="tb_permission" domainObjectName="TbPermission"/>
+        <table tableName="tb_role" domainObjectName="TbRole"/>
+        <table tableName="tb_user" domainObjectName="TbUser"/>
+        <table tableName="tb_workday" domainObjectName="TbWorkday"/>
+
+
+        <!--        <table tableName="test" domainObjectName="Test"/>-->
+        <!--        <table tableName="chapter" domainObjectName="Chapter"/>-->
+        <!--        <table tableName="section" domainObjectName="Section"/>-->
+        <!--        <table tableName="course" domainObjectName="Course"/>-->
+<!--                <table tableName="category" domainObjectName="Category"/>-->
+        <!--        <table tableName="course_category" domainObjectName="CourseCategory"/>-->
+        <!--        <table tableName="course_content" domainObjectName="CourseContent"/>-->
+        <!--        <table tableName="teacher" domainObjectName="Teacher"/>-->
+
+
+        <!--        <table tableName="course_content" domainObjectName="CourseContent"/>-->
+        <!--        <table tableName="course_content_file" domainObjectName="CourseContentFile"/>-->
+        <!--        <table tableName="teacher" domainObjectName="Teacher"/>-->
+        <!--        <table tableName="file" domainObjectName="File"/>-->
+        <!--        <table tableName="resource" domainObjectName="Resource"/>-->
+        <!--        <table tableName="role" domainObjectName="Role"/>-->
+        <!--        <table tableName="role_resource" domainObjectName="RoleResource"/>-->
+        <!--        <table tableName="role_user" domainObjectName="RoleUser"/>-->
+        <!--        <table tableName="member" domainObjectName="Member"/>-->
+        <!--        <table tableName="sms" domainObjectName="Sms"/>-->
+        <!--        <table tableName="member_course" domainObjectName="MemberCourse"/>-->
+    </context>
+</generatorConfiguration>

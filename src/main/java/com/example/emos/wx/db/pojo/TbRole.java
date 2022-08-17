@@ -1,38 +1,46 @@
 package com.example.emos.wx.db.pojo;
 
-import java.io.Serializable;
-import lombok.Data;
-
-/**
- * sys_config
- * @author 
- */
-@Data
-public class TbRole implements Serializable {
-    /**
-     * 主键
-     */
+public class TbRole {
     private Integer id;
 
-    /**
-     * 参数名
-     */
-    private String paramKey;
+    private String roleName;
 
-    /**
-     * 参数值
-     */
-    private String paramValue;
+    private String permissions;
 
-    /**
-     * 状态
-     */
-    private Byte status;
+    public Integer getId() {
+        return id;
+    }
 
-    /**
-     * 备注
-     */
-    private String remark;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    private static final long serialVersionUID = 1L;
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", roleName=").append(roleName);
+        sb.append(", permissions=").append(permissions);
+        sb.append("]");
+        return sb.toString();
+    }
 }

@@ -2,7 +2,7 @@ package com.example.emos.wx.db.pojo;
 
 import java.util.Date;
 
-public class TbWorkday {
+public class tbHolidays {
     private Integer id;
 
     private Date date;

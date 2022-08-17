@@ -1,38 +1,57 @@
 package com.example.emos.wx.db.pojo;
 
-import java.io.Serializable;
-import lombok.Data;
-
-/**
- * sys_config
- * @author 
- */
-@Data
-public class TbPermission implements Serializable {
-    /**
-     * 主键
-     */
+public class TbPermission {
     private Integer id;
 
-    /**
-     * 参数名
-     */
-    private String paramKey;
+    private String permissionName;
 
-    /**
-     * 参数值
-     */
-    private String paramValue;
+    private Integer moduleId;
 
-    /**
-     * 状态
-     */
-    private Byte status;
+    private Integer actionId;
 
-    /**
-     * 备注
-     */
-    private String remark;
+    public Integer getId() {
+        return id;
+    }
 
-    private static final long serialVersionUID = 1L;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getPermissionName() {
+        return permissionName;
+    }
+
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
+    }
+
+    public Integer getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(Integer moduleId) {
+        this.moduleId = moduleId;
+    }
+
+    public Integer getActionId() {
+        return actionId;
+    }
+
+    public void setActionId(Integer actionId) {
+        this.actionId = actionId;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", permissionName=").append(permissionName);
+        sb.append(", moduleId=").append(moduleId);
+        sb.append(", actionId=").append(actionId);
+        sb.append("]");
+        return sb.toString();
+    }
 }

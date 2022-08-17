@@ -1,11 +1,11 @@
 package com.example.emos.wx.db.pojo;
 
-public class TbFaceModel {
+public class tbModule {
     private Integer id;
 
-    private Integer userId;
+    private String moduleCode;
 
-    private String faceModel;
+    private String moduleName;
 
     public Integer getId() {
         return id;
@@ -15,20 +15,20 @@ public class TbFaceModel {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getModuleCode() {
+        return moduleCode;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setModuleCode(String moduleCode) {
+        this.moduleCode = moduleCode;
     }
 
-    public String getFaceModel() {
-        return faceModel;
+    public String getModuleName() {
+        return moduleName;
     }
 
-    public void setFaceModel(String faceModel) {
-        this.faceModel = faceModel;
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
     }
 
     @Override
@@ -38,8 +38,8 @@ public class TbFaceModel {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", userId=").append(userId);
-        sb.append(", faceModel=").append(faceModel);
+        sb.append(", moduleCode=").append(moduleCode);
+        sb.append(", moduleName=").append(moduleName);
         sb.append("]");
         return sb.toString();
     }
