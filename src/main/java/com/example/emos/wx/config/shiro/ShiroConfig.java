@@ -55,7 +55,7 @@ public class ShiroConfig {
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
-
+    //这个可能就是比如你贴上了RequirePermission，RequireRules的注解就会去进行校验
     @Bean
     public AuthorizationAttributeSourceAdvisor
     authorizationAttributeSourceAdvisor(SecurityManager securityManager) {

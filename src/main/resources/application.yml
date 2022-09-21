@@ -33,7 +33,7 @@ spring:
         max-active: 1000
         max-wait: -1ms
         max-idle: 16
-        min-idle: 8
+        min-idle: 9
   data:
     mongodb:
       host: localhost
