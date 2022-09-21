@@ -65,6 +65,8 @@ public class OAuth2Filter extends AuthenticatingFilter {
         resp.setCharacterEncoding("UTF-8");
         resp.setHeader("Access-Control-Allow-Credentials", "true");
         resp.setHeader("Access-Control-Allow-Origin", req.getHeader("Origin"));
+        //isAccessAllowed 返回是否需要拦截，如果需要拦截，就会走到这里，走到这里就可能会要去生成token
+        //也只有在这里去用threadLocal对象了，所以先清理一下，保证后面去生成到时候里面不会乱掉。
         threadLocalToken.clear();
 
         String token = getRequestToken(req);
