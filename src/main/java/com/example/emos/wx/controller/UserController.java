@@ -33,7 +33,7 @@ public class UserController {
     @PostMapping("/register")
     @ApiOperation("注册用户")
     public R register(@Valid @RequestBody RegisterForm form){
-        int userId = userService.registerUser(form.getRegisterCode(), form.getCode(), form.getNiceName(), form.getPhoto());
+        int userId = userService.registerUser(form.getRegisterCode(), form.getCode(), form.getNickname(), form.getPhoto());
         String token = jwtUtil.createToken(userId);
         Set<String> permissionSet = userService.searchUserPermissions(userId);
         saveCacheToken(token,userId);

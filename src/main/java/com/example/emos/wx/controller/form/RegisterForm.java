@@ -17,7 +17,7 @@ public class RegisterForm {
     private String code;
 
     @NotBlank(message = "昵称不能为空")
-    private String niceName;
+    private String nickname;
 
     @NotBlank(message = "头像不能为空")
     private String photo;
