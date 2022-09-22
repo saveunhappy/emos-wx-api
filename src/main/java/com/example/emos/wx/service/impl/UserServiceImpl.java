@@ -46,25 +46,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int registerUser(String registerCode, String code, String nickName, String photo) {
-        if(registerCode.equals("000000")){
+        if (registerCode.equals("000000")) {
             boolean haveRootUser = userDao.haveRootUser();
-            if(!haveRootUser){
+            if (!haveRootUser) {
                 String openId = getOpenId(code);
-                HashMap<String,Object> param = new HashMap<>();
-                param.put("openId",openId);
-                param.put("nickname",nickName);
-                param.put("photo",photo);
-                param.put("role","[0]");
-                param.put("status",1);
-                param.put("createTime",new Date());
-                param.put("root",true);
+                HashMap<String, Object> param = new HashMap<>();
+                param.put("openId", openId);
+                param.put("nickname", nickName);
+                param.put("photo", photo);
+                param.put("role", "[0]");
+                param.put("status", 1);
+                param.put("createTime", new Date());
+                param.put("root", true);
                 userDao.insert(param);
                 Integer id = userDao.searchIdByOpenId(openId);
                 return id;
-            }else{
+            } else {
                 throw new EmosException("无法绑定超级管理员账号");
             }
-        }else{
+        } else {
             //TODO 此处还有其他判断内容
         }
         return 0;
@@ -73,5 +73,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public Set<String> searchUserPermissions(int userId) {
         return userDao.searchUserPermissions(userId);
+    }
+
+    @Override
+    public Integer login(String code) {
+        String openid = getOpenId(code);
+        Integer userId = userDao.searchIdByOpenId(openid);
+        if(userId == null){
+            throw new EmosException("用户不存在");
+        }
+        //TODO 从消息队列中接受消息，转移到消息表
+        return userId;
     }
 }
