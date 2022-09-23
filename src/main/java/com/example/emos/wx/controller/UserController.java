@@ -2,6 +2,7 @@ package com.example.emos.wx.controller;
 
 import com.example.emos.wx.common.util.R;
 import com.example.emos.wx.config.shiro.JwtUtil;
+import com.example.emos.wx.controller.form.LoginForm;
 import com.example.emos.wx.controller.form.RegisterForm;
 import com.example.emos.wx.service.UserService;
 import io.swagger.annotations.Api;
@@ -30,17 +31,29 @@ public class UserController {
     private RedisTemplate redisTemplate;
     @Value("${emos.jwt.cache-expire}")
     private int cacheExpire;
+
+    @PostMapping("/login")
+    @ApiOperation("登陆系统")
+    public R login(@Valid @RequestBody LoginForm loginForm) {
+        Integer userId = userService.login(loginForm.getCode());
+        String token = jwtUtil.createToken(userId);
+        saveCacheToken(token, userId);
+        Set<String> permissions = userService.searchUserPermissions(userId);
+        return R.ok("登陆成功").put("token", token).put("permission", permissions);
+
+    }
+
     @PostMapping("/register")
     @ApiOperation("注册用户")
-    public R register(@Valid @RequestBody RegisterForm form){
+    public R register(@Valid @RequestBody RegisterForm form) {
         int userId = userService.registerUser(form.getRegisterCode(), form.getCode(), form.getNickname(), form.getPhoto());
         String token = jwtUtil.createToken(userId);
         Set<String> permissionSet = userService.searchUserPermissions(userId);
-        saveCacheToken(token,userId);
-        return R.ok("用户注册成功").put("token",token).put("permission",permissionSet);
+        saveCacheToken(token, userId);
+        return R.ok("用户注册成功").put("token", token).put("permission", permissionSet);
     }
 
-    private void saveCacheToken(String token,int userId){
-        redisTemplate.opsForValue().set(token,userId+"",cacheExpire, TimeUnit.DAYS);
+    private void saveCacheToken(String token, int userId) {
+        redisTemplate.opsForValue().set(token, userId + "", cacheExpire, TimeUnit.DAYS);
     }
 }
